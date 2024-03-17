@@ -1,0 +1,38 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-size: 28px;
+}
+
+#game-board {
+  position: relative;
+  width: 600px;
+  height: 600px;
+  border: 2px solid black;
+}
+
+.snake-element {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background-color: yellowgreen;
+  border: 1px solid black;
+  z-index: 1;
+}
+
+.food {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background-color: red;
+  border: 1px solid black;
+  z-index: 0;
+}/*# sourceMappingURL=style.css.map */
