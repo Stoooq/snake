@@ -1,24 +1,33 @@
 class Food {
-    constructor () {
-        this.board = document.querySelector('#game-board')
-        this.food = document.createElement('div')
-        this.food.classList.add('food')
-        this.food.style.left = `${Math.round(Math.random() * (20 - 1)) * 30}px`
-        this.food.style.top = `${Math.round(Math.random() * (20 - 1)) * 30}px`
-        this.board.append(this.food)
-    }
+	constructor(fieldSize, boardSize) {
+		this.fieldSize = fieldSize;
+		this.boardSize = boardSize;
+		this.positionX = Math.round(Math.random() * (boardSize - 1));
+		this.positionY = Math.round(Math.random() * (boardSize - 1));
+		this.board = document.querySelector("#game-board");
+		this.food = document.createElement("div");
+		this.food.classList.add("food");
+		this.render();
+	}
 
-    remove = () => {
-        this.food.remove()
-    }
+	render = () => {
+		this.food.style.width = `${this.fieldSize * 0.5}px`;
+		this.food.style.height = `${this.fieldSize * 0.5}px`;
+		this.food.style.left = `${(this.positionX * this.fieldSize) + this.fieldSize * 0.25}px`;
+		this.food.style.top = `${(this.positionY * this.fieldSize) + this.fieldSize * 0.25}px`;
+		this.board.append(this.food);
+	};
 
-    getPositionX = () => {
-        return this.food.offsetLeft
-    }
+	newPosition = () => {
+		this.positionX = Math.round(Math.random() * (this.boardSize - 1));
+		this.positionY = Math.round(Math.random() * (this.boardSize - 1));
+		console.log("new: ", this.positionX, this.positionY);
+        this.render()
+	};
 
-    getPositionY = () => {
-        return this.food.offsetTop
-    }
+	destroy = () => {
+		this.food.remove();
+	};
 }
 
-export default Food
+export default Food;
